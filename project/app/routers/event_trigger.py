@@ -1,0 +1,24 @@
+# import newrelic.agent
+#
+# newrelic.agent.initialize("newrelic.ini")
+from project.app.routers import event_router
+from celery import shared_task
+from celery.signals import task_success
+
+
+@event_router.post("/trigger")
+async def trigger_event():
+    _ = event_celery_trigger.delay()
+    return {"message": "Event triggered!"}
+
+
+@shared_task
+def event_celery_trigger():
+    print("Event triggered!")
+    return True
+
+
+@task_success.connect(sender=event_celery_trigger, weak=False)
+def event_celery_trigger_success_handler(sender, result, **kwargs):
+    print("Event triggered successfully!")
+    return True

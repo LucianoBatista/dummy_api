@@ -1,0 +1,17 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+celery = "==5.3.4"
+fastapi = "==0.104.1"
+uvicorn = "==0.23.2"
+gunicorn = "==21.2.0"
+newrelic = "==9.1.1"
+redis = "==4.5.1"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
