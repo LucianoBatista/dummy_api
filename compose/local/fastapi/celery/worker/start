@@ -3,4 +3,4 @@
 set -o errexit
 set -o nounset
 
-celery -A project.main.celery worker --loglevel=info
+newrelic-admin run-program celery -A project.main.celery worker -E --loglevel=info

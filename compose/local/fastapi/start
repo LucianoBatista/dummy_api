@@ -4,4 +4,4 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
-uvicorn project.main:app --reload --reload-dir project --host 0.0.0.0
+newrelic-admin run-program uvicorn project.main:app --reload --reload-dir project --host 0.0.0.0
